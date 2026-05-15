@@ -44,13 +44,11 @@ It compares several **Deep Learning (DL)** models for DeepFake detection.
 
 ## Fine-Tuning Strategy
 
-The paper clearly states:
-
 * Initially lower layers were frozen
 * Higher/deeper layers were unfrozen later
 * Fine-tuning focused on DeepFake-specific artifacts
 
-This is standard staged transfer learning.
+This is transfer learning.
 
 ---
 
@@ -110,7 +108,7 @@ It achieved:
 
 * 97.95% test accuracy
 * 98.08% peak accuracy at 3K images
-* 100% on unseen ChatGPT/Gemini generated images
+* 90% on unseen ChatGPT/Gemini generated images
 
 ---
 
@@ -122,32 +120,20 @@ Combined / hybrid deep architecture
 
 ## Pretrained On
 
-Most likely:
-
 * InceptionV3 pretrained on ImageNet
 * DenseNet121 pretrained on ImageNet
-
-(The paper implies transfer learning usage.)
 
 ---
 
 ## Combination Strategy
 
-The paper does NOT provide exact implementation, but from wording:
-
-> “InceptionV3 and DenseNet121 hybrid model”
-
-This usually means:
-
-### Likely Architecture
+“InceptionV3 and DenseNet121 hybrid model”
 
 Feature Extraction:
-
-* InceptionV3 branch
-* DenseNet121 branch
+* InceptionV3
+* DenseNet121 
 
 Then:
-
 * Concatenate extracted features
 * Fully connected classifier
 * Binary output layer
@@ -171,8 +157,6 @@ Sigmoid Output
 ---
 
 ## Fine-Tuning
-
-Likely:
 
 * Pretrained weights loaded
 * Top layers retrained
@@ -198,8 +182,6 @@ Single pretrained CNN
 
 ## Fine-Tuning
 
-Explicitly mentioned:
-
 * Transfer learning
 * Fine-tuning
 
@@ -208,16 +190,12 @@ Explicitly mentioned:
 ## Likely Implementation
 
 Base:
-
 * InceptionV3 pretrained backbone
-
 Modification:
-
 * Replace final softmax layer
 * Add binary classifier head
 
 Typical setup:
-
 GlobalAveragePooling
 → Dense Layer
 → Dropout
@@ -233,8 +211,6 @@ GlobalAveragePooling
 
 ## Why Better Than Hybrid
 
-The paper says:
-
 * Fine-tuned pretrained weights improved performance
 * Deep semantic learning improved DeepFake detection
 
@@ -248,13 +224,9 @@ Basic CNN trained from scratch
 
 ## Pretraining
 
-* No pretrained weights mentioned
+* No pretrained weights
 
 ## Architecture
-
-The exact layers are not provided.
-
-Likely included:
 
 * Conv layers
 * MaxPooling
@@ -267,7 +239,6 @@ Likely included:
 ## Characteristics
 
 Shallow architecture:
-
 * Lower feature extraction capability
 * Poorer semantic understanding
 * Less robust to complex forgery artifacts
@@ -280,9 +251,7 @@ Shallow architecture:
 
 ---
 
-# Which Model is the Baseline?
-
-The paper does not explicitly say “baseline,” but practically:
+# Baseline Model
 
 | Baseline Type           | Model               |
 | ----------------------- | ------------------- |
@@ -291,7 +260,6 @@ The paper does not explicitly say “baseline,” but practically:
 | Main proposed model     | EfficientNet-B3     |
 
 So:
-
 * **Simple CNN** acts as the DL baseline
 * **EfficientNet-B3** is the proposed advanced model
 
@@ -299,7 +267,7 @@ So:
 
 # Overall DL Comparison
 
-| Model                     | Pretrained     | Fine-tuned | Combined? | Notes                 |
+| Model                     | Pretrained     | Fine-tuned | Hybrid    | Notes                 |
 | ------------------------- | -------------- | ---------- | --------- | --------------------- |
 | Simple CNN                | No             | No         | No        | Basic baseline        |
 | InceptionV3               | Yes (ImageNet) | Yes        | No        | Transfer learning     |
@@ -322,13 +290,11 @@ So:
 
 ### Final Performance:
 
-* 97.95% overall accuracy
-* 98.08% peak accuracy
-* 100% on unseen AI-generated images
+* 95.95% overall accuracy
+* 97.08% peak accuracy
+* 90% on unseen AI-generated images
 
 ---
-
-# Likely Actual Implementation Pipeline
 
 ## Proposed EfficientNet-B3 Workflow
 
@@ -359,14 +325,11 @@ Real / Fake Prediction
 
 # Important Observation
 
-The paper gives:
-
 * Complete implementation details only for EfficientNet-B3
 * Partial details for InceptionV3 and hybrid model
 * Minimal details for Simple CNN
 
 So:
-
 * EfficientNet-B3 is the actual proposed architecture
 * Other DL models are comparative baselines/benchmarks
 # Author
