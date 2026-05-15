@@ -1,6 +1,6 @@
 # Deep-Fake-Detection
 Comparative analysis of ML and DL techniques for Deep Fake Detection using efficientNetB3 as framework or baseline
-| Model                     | Pretrained     | Fine-tuned | Combined? | Notes                 |
+| Model                     | Pretrained     | Fine-tuned | Hybrid    | Notes                 |
 | ------------------------- | -------------- | ---------- | --------- | --------------------- |
 | Simple CNN                | No             | No         | No        | Basic baseline        |
 | InceptionV3               | Yes (ImageNet) | Yes        | No        | Transfer learning     |
@@ -9,13 +9,12 @@ Comparative analysis of ML and DL techniques for Deep Fake Detection using effic
 
 
 # detail
-From the text you shared, the paper compares several **Deep Learning (DL)** models for DeepFake detection.
-Below is a clean breakdown of:
+It compares several **Deep Learning (DL)** models for DeepFake detection.
 
 1. **Which DL models were used**
 2. **Which pretrained backbone was used**
 3. **How fine-tuning was done**
-4. **Whether models were standalone or combined**
+4. **Whether models were standalone or hybrid/combined**
 5. **Which model is the baseline**
 6. **Implementation details for each model**
 
